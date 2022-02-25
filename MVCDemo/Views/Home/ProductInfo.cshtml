@@ -1,0 +1,10 @@
+﻿@model MVCDemo.Models.Product
+
+@{
+    ViewBag.Title = "ProductInfo";
+    Layout = "~/Views/_DemoiLayoutPage.cshtml";
+}
+
+<h2>ProductInfo</h2>
+
+상품명 : @Model.Name, 상품 상세정보 : @Model.Description, 가격: @Model.Priced

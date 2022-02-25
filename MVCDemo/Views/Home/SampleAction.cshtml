@@ -1,0 +1,52 @@
+﻿@model MVCDemo.Models.Product
+
+@{
+    ViewBag.Title = "SampleAction";
+    Layout = "~/Views/_DemoiLayoutPage.cshtml";
+}
+
+<h2>SampleAction</h2>
+<table>
+    <thead>
+        <tr>
+            <th>속성</th><th>값</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>상품명</td><td>@Model.Name</td></tr>
+        <tr><td>가격</td><td>@Model.Priced</td></tr>
+        <tr><td>주문</td><td>@ViewBag.OrderCount</td></tr>
+        <tr><td>수량</td>
+            <td>
+                @switch ((int)ViewBag.ProductCount)
+                {
+                    case 0: @: 품절 
+                        break;
+                    case 1: <strong>재고 부족(남은 수량: @ViewBag.ProductCount)</strong> break;
+                    default: @ViewBag.ProductCount break;
+                }
+                </td></tr>
+        <tr><td>if수량</td>
+            <td>
+                @if (ViewBag.ProductCount == 0)
+                {
+                    @: 품절
+                }
+                else if (ViewBag.ProductCount == 1)
+                {
+                    <strong>재고 부족(남은 수량: @ViewBag.ProductCount)</strong>
+                }
+                else
+                {
+                    @ViewBag.ProductCount
+                }
+            </td>
+        </tr>
+</tbody>
+</table>
+
+
+<div data-discount="@ViewBag.Discount" data-shipPrice="@ViewBag.ShipPrice"></div>
+
+할인 : <input type="checkbox" checked="@ViewBag.Discount" />
+착불 : <input type="checkbox" checked="@ViewBag.ShipPrice" />

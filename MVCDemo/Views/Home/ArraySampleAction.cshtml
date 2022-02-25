@@ -1,0 +1,33 @@
+﻿@using MVCDemo.Models
+@model MVCDemo.Models.Product[]
+
+@{
+    ViewBag.Title = "ArraySampleAction";
+Layout = "~/Views/_DemoiLayoutPage.cshtml";
+}
+
+<h2>ArraySampleAction</h2>
+@if (Model.Length > 0)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>상품</th>
+                <th>가격</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Product prod in Model)
+            {
+                <tr>
+                    <td>@prod.Name</td>
+                    <td>@prod.Priced</td>
+                </tr>V
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h2>상품이 없습니다.</h2>
+}
